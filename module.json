@@ -1,0 +1,9 @@
+{
+	"name": "Composer",
+	"slug": "composer",
+	"namespace": "Composer",
+	"version": "1.0",
+	"author": "armpit",
+	"license": "ISC",
+	"description": "Display composer packages and versions."
+}
