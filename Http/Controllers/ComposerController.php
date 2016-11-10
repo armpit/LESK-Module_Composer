@@ -1,4 +1,19 @@
 <?php
+/**
+ * Copyright (c) 2016, armpit <armpit@rumpigs.net>
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
 namespace App\Modules\Composer\Http\Controllers;
 
 use App\Http\Requests;
@@ -9,11 +24,13 @@ use Auth;
 
 class ComposerController extends Controller
 {
+
+    /**
+     * Show a list of all packages.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $var = 'SomeVar';
-        Audit::log(Auth::user()->id, trans('composer::general.audit-log.category'), trans('composer::general.audit-log.msg-index', ['var' => $var]));
-
         $page_title = trans('composer::general.page.index.title');
         $page_description = trans('composer::general.page.index.description');
 
@@ -23,6 +40,12 @@ class ComposerController extends Controller
         return view('composer::index', compact('page_title', 'page_description', 'data'));
     }
 
+
+    /**
+     * Show information for the given package.
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public static function show($id)
     {
         $data = self::readComposer();
@@ -54,6 +77,11 @@ class ComposerController extends Controller
         return view('composer::show', compact('page_title', 'page_description', 'data'));
     }
 
+
+    /**
+     * Read the composer.lock file.
+     * @return array
+     */
     private static function readComposer()
     {
         $path = realpath(dirname(__FILE__));
@@ -62,6 +90,12 @@ class ComposerController extends Controller
         return json_decode($json, true);
     }
 
+
+    /**
+     * Give each package an id number so we can link to them.
+     * @param array $data
+     * @return array
+     */
     private static function idPackages($data)
     {
         $x = 0;
