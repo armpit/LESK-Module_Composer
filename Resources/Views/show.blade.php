@@ -47,13 +47,13 @@
 
                         <b>Source: </b><br />
                         &nbsp;&nbsp;&nbsp;&nbsp;<b>Type: </b>{{ $data['source']['type'] }}<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;<b>URL: </b>{{ $data['source']['url'] }}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<b>URL: </b><a href="{{ $data['source']['url'] }}">{{ $data['source']['url'] }}</a><br />
                         &nbsp;&nbsp;&nbsp;&nbsp;<b>Reference: </b>{{ $data['source']['reference'] }}<br />
                         <br />
 
                         <b>Distribution: </b><br />
                         &nbsp;&nbsp;&nbsp;&nbsp;<b>Type: </b>{{ $data['dist']['type'] }}<br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;<b>URL: </b>{{ $data['dist']['url'] }}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<b>URL: </b><a href="{{ $data['dist']['url'] }}">{{ $data['dist']['url'] }}</a><br />
                         &nbsp;&nbsp;&nbsp;&nbsp;<b>Reference: </b>{{ $data['dist']['reference'] }}<br />
                         &nbsp;&nbsp;&nbsp;&nbsp;<b>Shasum: </b>{{ $data['dist']['shasum'] }}<br />
                         <br />
