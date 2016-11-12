@@ -85,7 +85,7 @@ class ComposerController extends Controller
     private static function readComposer()
     {
         $path = realpath(dirname(__FILE__));
-        $file = $path.'/../../../../../composer.lock';
+        $file = storage_path() . '/../composer.lock';
         $json = file_get_contents($file);
         return json_decode($json, true);
     }
